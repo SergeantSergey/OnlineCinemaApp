@@ -75,6 +75,7 @@
     <style name="H3Heading" parent="CondensedBase">
         <item name="android:letterSpacing">0.0357</item>
         <item name="android:textSize">32sp</item>
+        <item name="android:textColor">?attr/colorAccented</item>
         <item name="android:textStyle">bold</item>
     </style>
 
