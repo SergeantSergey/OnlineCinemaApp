@@ -1,4 +1,11 @@
 package com.example.onlinecinemaapp.feature.moviesList.domain.module
 
-class CinemaDomainModule {
-}
+data class CinemaDomainModule(
+    val page: Int,
+
+    val results: List<MovieDomainModel>,
+
+    val totalPages: Int,
+
+    val totalResults: Int,
+)

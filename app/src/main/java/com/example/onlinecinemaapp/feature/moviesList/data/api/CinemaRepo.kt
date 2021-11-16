@@ -4,5 +4,5 @@ import com.example.onlinecinemaapp.feature.moviesList.domain.module.CinemaDomain
 
 interface CinemaRepo {
 
-    suspend fun getCinema(cityName: String): CinemaDomainModule
+    suspend fun getCinema(): CinemaDomainModule
 }
