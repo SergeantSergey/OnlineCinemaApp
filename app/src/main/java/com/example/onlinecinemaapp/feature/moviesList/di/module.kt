@@ -5,6 +5,8 @@ import com.example.onlinecinemaapp.feature.moviesList.data.api.CinemaRemoteSourc
 import com.example.onlinecinemaapp.feature.moviesList.data.api.CinemaRepo
 import com.example.onlinecinemaapp.feature.moviesList.data.api.CinemaRepoImpl
 import com.example.onlinecinemaapp.feature.moviesList.domain.MoviesListInteractor
+import com.example.onlinecinemaapp.feature.moviesList.ui.MoviesListViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -24,5 +26,9 @@ val moviesListModule = module {
 
     single {
         MoviesListInteractor(cinemaRepo = get())
+    }
+
+    viewModel {
+        MoviesListViewModel(moviesListInteractor = get())
     }
 }
