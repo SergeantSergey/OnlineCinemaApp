@@ -5,5 +5,5 @@ import com.example.onlinecinemaapp.base.Event
 object ViewState
 
 sealed class UiEvent : Event {
-    object OnBackPressed : UiEvent()
+    data class OnPlayClicked(val ulr: String) : UiEvent()
 }

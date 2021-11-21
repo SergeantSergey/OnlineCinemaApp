@@ -5,6 +5,7 @@ import com.example.onlinecinemaapp.di.appModule
 import com.example.onlinecinemaapp.di.navigationModule
 import com.example.onlinecinemaapp.feature.movieInfo.di.movieInfoModule
 import com.example.onlinecinemaapp.feature.moviesList.di.moviesListModule
+import com.example.onlinecinemaapp.feature.player.di.playerModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -21,7 +22,7 @@ class App : Application() {
             // declare used Android context
             androidContext(this@App)
             // declare modules
-            modules(appModule, navigationModule, moviesListModule, movieInfoModule)
+            modules(appModule, navigationModule, moviesListModule, movieInfoModule, playerModule)
         }
 
         // log

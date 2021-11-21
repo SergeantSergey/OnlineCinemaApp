@@ -34,6 +34,9 @@ class MovieInfoFragment private constructor() : Fragment(R.layout.fragment_movie
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             tvTitle.text = movie.title
+            btnPlay.setOnClickListener {
+                viewModel.processUiEvent(UiEvent.OnPlayClicked(movie.video))
+            }
         }
     }
 }

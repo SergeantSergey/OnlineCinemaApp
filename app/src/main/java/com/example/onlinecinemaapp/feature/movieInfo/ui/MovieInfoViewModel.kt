@@ -2,6 +2,7 @@ package com.example.onlinecinemaapp.feature.movieInfo.ui
 
 import com.example.onlinecinemaapp.base.BaseViewModel
 import com.example.onlinecinemaapp.base.Event
+import com.example.onlinecinemaapp.feature.player.ui.PlayerFragment
 import com.github.terrakok.cicerone.Router
 
 class MovieInfoViewModel(
@@ -13,9 +14,10 @@ class MovieInfoViewModel(
     override suspend fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
 
-            is UiEvent.OnBackPressed -> {
-                router.exit()
+            is UiEvent.OnPlayClicked -> {
+                router.navigateTo(PlayerFragment(event.ulr))
             }
+
         }
         return null
     }
