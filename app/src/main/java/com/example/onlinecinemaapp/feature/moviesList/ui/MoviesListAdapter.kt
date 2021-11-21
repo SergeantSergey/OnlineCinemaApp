@@ -6,17 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.onlinecinemaapp.R
 import com.example.onlinecinemaapp.feature.moviesList.domain.module.MovieDomainModel
 
 class MoviesListAdapter(
-    private val moviesList: MutableList<MovieDomainModel>
+    private val moviesList: MutableList<MovieDomainModel>,
+    private val onItemClicked: (item: MovieDomainModel) -> Unit
 ) : RecyclerView.Adapter<MoviesListAdapter.MoviesListViewHolder>() {
 
     class MoviesListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        var layoutMovie: ConstraintLayout = view.findViewById(R.id.layoutMovie)
         var tvTitle: TextView = view.findViewById(R.id.tvTitle)
         var tvOverview: TextView = view.findViewById(R.id.tvOverview)
         var ivPreview: ImageView = view.findViewById(R.id.ivPreview)
@@ -37,6 +40,10 @@ class MoviesListAdapter(
                 .load(moviesList[position].posterPath)
                 .centerCrop()
                 .into(ivPreview)
+
+            layoutMovie.setOnClickListener {
+                onItemClicked(moviesList[position])
+            }
         }
     }
 
@@ -44,6 +51,7 @@ class MoviesListAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun setMovieList(list: List<MovieDomainModel>) {
+        this.moviesList.clear()
         this.moviesList.addAll(list)
         notifyDataSetChanged()
     }

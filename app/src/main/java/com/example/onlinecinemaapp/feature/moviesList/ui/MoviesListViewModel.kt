@@ -2,10 +2,13 @@ package com.example.onlinecinemaapp.feature.moviesList.ui
 
 import com.example.onlinecinemaapp.base.BaseViewModel
 import com.example.onlinecinemaapp.base.Event
+import com.example.onlinecinemaapp.feature.movieInfo.ui.MovieInfoScreen
 import com.example.onlinecinemaapp.feature.moviesList.domain.MoviesListInteractor
+import com.github.terrakok.cicerone.Router
 
 class MoviesListViewModel(
-    private val moviesListInteractor: MoviesListInteractor
+    private val moviesListInteractor: MoviesListInteractor,
+    private val router: Router
 ) : BaseViewModel<ViewState>() {
 
     init {
@@ -52,6 +55,10 @@ class MoviesListViewModel(
                 return previousState.copy(
                     errorMessage = moviesListInteractor.getErrorMessage(event.throwable)
                 )
+            }
+
+            is UiEvent.OnCinemaClicked -> {
+                router.navigateTo(MovieInfoScreen(event.movie))
             }
         }
 

@@ -29,6 +29,6 @@ val moviesListModule = module {
     }
 
     viewModel {
-        MoviesListViewModel(moviesListInteractor = get())
+        MoviesListViewModel(moviesListInteractor = get(), router = get())
     }
 }

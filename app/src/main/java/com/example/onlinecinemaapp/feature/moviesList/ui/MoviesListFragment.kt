@@ -1,7 +1,9 @@
 package com.example.onlinecinemaapp.feature.moviesList.ui
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -16,7 +18,10 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
     private val moviesListAdapter by lazy {
         MoviesListAdapter(
-            moviesList = mutableListOf()
+            moviesList = mutableListOf(),
+            onItemClicked = { movieDomainModel ->
+                viewModel.processUiEvent(UiEvent.OnCinemaClicked(movieDomainModel))
+            }
         )
     }
 
@@ -30,7 +35,6 @@ class MoviesListFragment : Fragment(R.layout.fragment_movies_list) {
 
     private fun render(viewState: ViewState) {
         if (viewState.errorMessage != null) return
-
         moviesListAdapter.setMovieList(viewState.moviesList)
     }
 

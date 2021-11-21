@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -46,6 +47,7 @@ dependencies {
     def coroutines_version = "1.5.2"
     def glide_version = "4.12.0"
     def view_binding_version = "1.5.2"
+    def cicerone_version = "7.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.0'
@@ -94,4 +96,7 @@ dependencies {
 
     // view binding
     implementation "com.github.kirich1409:viewbindingpropertydelegate:$view_binding_version"
+
+    // cicerone (навигация)
+    implementation("com.github.terrakok:cicerone:$cicerone_version")
 }

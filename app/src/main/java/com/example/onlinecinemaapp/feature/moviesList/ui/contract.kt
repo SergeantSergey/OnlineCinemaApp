@@ -12,11 +12,18 @@ data class ViewState(
 
 sealed class UiEvent : Event {
     object RequestCinema : UiEvent()
+    data class OnCinemaClicked(
+        val movie: MovieDomainModel
+    ) : UiEvent()
 }
 
 sealed class DataEvent : Event {
 
-    data class SuccessCinemaRequest(val cinemaDomainModel: CinemaDomainModule) : DataEvent()
+    data class SuccessCinemaRequest(
+        val cinemaDomainModel: CinemaDomainModule
+    ) : DataEvent()
 
-    data class ErrorCinemaRequest(val throwable: Throwable) : DataEvent()
+    data class ErrorCinemaRequest(
+        val throwable: Throwable
+    ) : DataEvent()
 }

@@ -1,5 +1,9 @@
 package com.example.onlinecinemaapp.feature.moviesList.domain.module
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieDomainModel(
 
     val adult: Boolean,
@@ -27,4 +31,4 @@ data class MovieDomainModel(
     val voteAverage: String,
 
     val voteCount: String,
-)
+) : Parcelable
