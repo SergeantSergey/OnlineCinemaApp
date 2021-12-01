@@ -1,6 +1,8 @@
 package com.example.onlinecinemaapp.feature.player.di
 
 import com.example.onlinecinemaapp.feature.player.domain.PlayerInteractor
+import com.example.onlinecinemaapp.feature.player.playerClient.Player
+import com.example.onlinecinemaapp.feature.player.playerClient.PlayerImpl
 import com.example.onlinecinemaapp.feature.player.ui.PlayerViewModel
 import com.google.android.exoplayer2.ExoPlayer
 import org.koin.android.ext.koin.androidContext
@@ -13,11 +15,15 @@ val playerModule = module {
         ExoPlayer.Builder(androidContext()).build()
     }
 
+    single<Player> {
+        PlayerImpl(exoPlayer = get())
+    }
+
     single {
         PlayerInteractor(player = get())
     }
 
-    viewModel {
-        PlayerViewModel(playerInteractor = get())
+    viewModel { (url: String) ->
+        PlayerViewModel(url = url, playerInteractor = get())
     }
 }

@@ -8,6 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.onlinecinemaapp.R
 import com.example.onlinecinemaapp.databinding.FragmentPlayerBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class PlayerFragment private constructor() : Fragment(R.layout.fragment_player) {
 
@@ -23,7 +24,9 @@ class PlayerFragment private constructor() : Fragment(R.layout.fragment_player) 
     }
 
     private val viewBinding by viewBinding<FragmentPlayerBinding>()
-    private val viewModel by viewModel<PlayerViewModel>()
+    private val viewModel by viewModel<PlayerViewModel> {
+        parametersOf(url)
+    }
 
     private val url: String by lazy {
         requireArguments().getString(URL)!!
@@ -33,7 +36,6 @@ class PlayerFragment private constructor() : Fragment(R.layout.fragment_player) 
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.processUiEvent(UiEvent.SetPlayerView(viewBinding.styledPlayer))
-        viewModel.processUiEvent(UiEvent.SetVideoUrl(url))
         viewModel.processUiEvent(UiEvent.PlayVideo)
     }
 

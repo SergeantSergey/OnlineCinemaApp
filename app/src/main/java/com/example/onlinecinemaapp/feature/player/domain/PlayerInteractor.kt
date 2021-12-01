@@ -1,24 +1,21 @@
 package com.example.onlinecinemaapp.feature.player.domain
 
-import com.google.android.exoplayer2.ExoPlayer
-import com.google.android.exoplayer2.MediaItem
+import com.example.onlinecinemaapp.feature.player.playerClient.Player
 import com.google.android.exoplayer2.ui.StyledPlayerView
 
 class PlayerInteractor(
-    private val player: ExoPlayer
+    private val player: Player
 ) {
 
     fun setView(view: StyledPlayerView) {
-        view.player = player
+        player.setView(view)
     }
 
     fun setUrl(url: String) {
-        val mediaItem = MediaItem.fromUri(url)
-        player.setMediaItem(mediaItem)
+        player.setUrl(url)
     }
 
     fun playerPlay() {
-        player.prepare()
         player.play()
     }
 

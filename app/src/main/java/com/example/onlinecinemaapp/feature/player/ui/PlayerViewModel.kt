@@ -5,8 +5,14 @@ import com.example.onlinecinemaapp.base.Event
 import com.example.onlinecinemaapp.feature.player.domain.PlayerInteractor
 
 class PlayerViewModel(
+    private val url: String,
     private val playerInteractor: PlayerInteractor
 ) : BaseViewModel<ViewState>() {
+
+    init {
+        playerInteractor.setUrl(url)
+    }
+
     override fun initialViewState(): ViewState = ViewState
 
     override suspend fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -14,10 +20,6 @@ class PlayerViewModel(
 
             is UiEvent.SetPlayerView -> {
                 playerInteractor.setView(event.view)
-            }
-
-            is UiEvent.SetVideoUrl -> {
-                playerInteractor.setUrl(event.url)
             }
 
             is UiEvent.PlayVideo -> {
