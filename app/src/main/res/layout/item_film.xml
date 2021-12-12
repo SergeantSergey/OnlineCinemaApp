@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filmContainer"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:layout_margin="8dp"
+    android:animateLayoutChanges="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="16dp">
+
+    <ImageView
+        android:id="@+id/itemFilmPoster"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:scaleType="centerCrop"
+        tools:src="@tools:sample/avatars" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_shadow" />
+
+    <TextView
+        android:id="@+id/itemFilmTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:animateLayoutChanges="true"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textAppearance="@style/BoldText.CardTitle"
+        android:textColor="@color/white_100"
+        android:textSize="24sp"
+        tools:text="Hello man! how are u" />
+
+    <TextView
+        android:id="@+id/tvLabelPopularity"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_green_with_corners_4"
+        android:textAlignment="center"
+        android:textAppearance="@style/BoldText.Subtitle"
+        tools:text="8.1" />
+
+</androidx.cardview.widget.CardView>

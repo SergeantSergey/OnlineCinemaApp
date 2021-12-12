@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">OnlineCinemaApp</string>
-
-    <!--errors-->
-    <string name="no_internet_connection">Отсутствует подключение к интеренету</string>
+    <string name="app_name">OnlineCinema</string>
+    <string name="no_internet_connection">Нет подключения к интернету</string>
+    <string name="error_try_again_later">Произошла ошибка, попробуйте повторить позже.</string>
+    <string name="error_type_renderer_unexpected">Не удалось воспроизвести видео, попробуйте повторить позже.</string>
+    <string name="error_type_source_remote">Не удалось загрузить видео, попробуйте повторить позже.</string>
+    <string name="error_type_memory">Недостаточно памяти для воспроизведения, попробуйте повторить позже.</string>
+    <string name="error_type_timeout">Время ожидания загрузки истекло, попробуйте повторить позже.</string>
+    <string name="repeat">Повторить</string>
+    <string name="rating_kino">Рейтинг Kino:</string>
+    <string name="add_to_playlist">Добавить в плейлист</string>
+    <string name="cant_get_films_feed_error_text">Не удалось получить список фильмов, проверьте пожалуйста подключение к интернету.</string>
 </resources>

@@ -2,31 +2,27 @@ package com.example.onlinecinemaapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.onlinecinemaapp.feature.moviesList.ui.MoviesListScreen
-import com.github.terrakok.cicerone.NavigatorHolder
-import com.github.terrakok.cicerone.Router
-import com.github.terrakok.cicerone.androidx.AppNavigator
 import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import ru.terrakok.cicerone.Router
 
 class MainActivity : AppCompatActivity() {
 
-    private val router by inject<Router>()
-    private val navigatorHolder by inject<NavigatorHolder>()
-    private val navigator = AppNavigator(this, R.id.fragmentContainerView)
+    private val router: Router by inject(named(FILMS_FEED_QUALIFIER))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        router.newRootScreen(MoviesListScreen())
+
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragmentHolderContainer, HolderFragment.newInstance())
+                .commit()
+        }
     }
 
-    override fun onResumeFragments() {
-        super.onResumeFragments()
-        navigatorHolder.setNavigator(navigator)
-    }
-
-    override fun onPause() {
-        navigatorHolder.removeNavigator()
-        super.onPause()
+    override fun onBackPressed() {
+        router.exit()
     }
 }
